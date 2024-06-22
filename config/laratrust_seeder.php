@@ -13,21 +13,21 @@ return [
 
     'roles_structure' => [
         'SuperAdmin' => [
-            'users' => 'c,r,u,d',
-            'payments' => 'c,r,u,d',
+            'user' => 'c,r,u,d',
+            'payment' => 'c,r,u,d',
             'profile' => 'r,u',
-            'settnigs' => 'c,r,u,d',
-            'roles' => 'c,r,u,d',
+            'settnig' => 'c,r,u,d',
+            'role' => 'c,r,u,d',
         ],
         'Admin' => [
-            'users' => 'c,r,u,d',
+            'user' => 'c,r,u,d',
             'profile' => 'r,u',
-            'roles' => 'c,r',
+            'role' => 'c,r',
         ],
         'user' => [
             'profile' => 'r,u',
         ],
-       
+
     ],
 
     'permissions_map' => [

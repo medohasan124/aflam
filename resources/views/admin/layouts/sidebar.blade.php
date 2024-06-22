@@ -191,6 +191,16 @@
             </a>
           </li>
 
+          <li class="nav-item">
+            <a href="{{ route('admin.users.index') }}" class="nav-link">
+                <i class="fas fa-users"></i>
+              <p>
+                @lang('admin.users')
+                {{-- <span class="right badge badge-danger">New</span> --}}
+              </p>
+            </a>
+          </li>
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

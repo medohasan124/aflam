@@ -2,9 +2,11 @@
 
 namespace App\DataTables;
 
+
 use App\Models\Role;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
+use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
 use Yajra\DataTables\Html\Button;
@@ -26,6 +28,10 @@ class RolesDataTable extends DataTable
 
             ->addColumn('action', 'admin.role.dataTable.action')
              ->addColumn('checkbox', 'admin.role.dataTable.checkbox')
+             ->addColumn('used', function($role){
+                $role_user = DB::table('role_user')->where('role_id',$role->id)->count();
+                return $role_user ;
+             })
             ->editColumn('created_at',function($role){
                 return $role->created_at->format('d-m-y');
             })
@@ -79,8 +85,14 @@ class RolesDataTable extends DataTable
             ->width(10)
             ->addClass('text-center')
             ->title('<input type="checkbox" class="allCheckbox">'),
+
             Column::make('id'),
             Column::make('name'),
+            Column::computed('used')
+            ->exportable(false)
+            ->printable(false)
+            ->width(10)
+            ->addClass('text-center'),
             Column::make('created_at'),
             Column::make('updated_at'),
             Column::computed('action'),

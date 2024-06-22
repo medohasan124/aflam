@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Admin\dashboard;
 use App\Http\Controllers\Admin\role;
+use App\Http\Controllers\Admin\User;
+use App\Http\Controllers\Admin\UserContoller;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -22,17 +24,31 @@ Route::middleware([
     'localeSessionRedirect',
     'localizationRedirect',
     'localeViewPath',
-    // 'auth',
+     'auth',
     // 'role:SuperAdmin|Admin'
 ])
 ->prefix(LaravelLocalization::setLocale())
 ->group(function(){
+
+
     Route::name('admin.')
             ->prefix('admin')
             ->group(function(){
+
                 Route::resource('dashboard', dashboard::class)->names('dashbaord');
+                Route::delete('roles/bulckDelete',[role::class, 'bulckDelete'])->name('roles.bulckDelete');
                 Route::resource('roles', role::class)->names('roles');
-                Route::post('roles/bulckDelete',[role::class, 'bulckDelete'])->name('roles.bulckDelete');
+
+
+
+
+
+                Route::get('users/data', [UserContoller::class, 'data'])->name('users.data');
+                Route::delete('users/bulckDelete',[UserContoller::class, 'bulckDelete'])->name('users.bulckDelete');
+                Route::resource('users', UserContoller::class)->names('users');
+
+
+
 
             });
 });

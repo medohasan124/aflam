@@ -26,13 +26,13 @@ return [
          * Wild card will add "%" in between every characters of the keyword.
          * SQL: column LIKE "%k%e%y%w%o%r%d%"
          */
-        'use_wildcards'    => false,
+        'use_wildcards'    => true,
 
         /*
          * Perform a search which starts with the given keyword.
          * SQL: column LIKE "keyword%"
          */
-        'starts_with'      => false,
+        'starts_with'      => true,
     ],
 
     /*
@@ -97,7 +97,7 @@ return [
          * List of columns that are allowed to display html content.
          * Note: Adding columns to list will make us available to XSS attacks.
          */
-        'raw'       => ['action','checkbox'],
+        'raw'       => ['action','checkbox','role','used'],
 
         /*
          * List of columns are forbidden from being searched/sorted.

@@ -8,11 +8,11 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">@lang('admin.roles')</h1>
+            <h1 class="m-0">@lang('admin.users')</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Role</a></li>
+              <li class="breadcrumb-item"><a href="#">User</a></li>
               <li class="breadcrumb-item active">Dashboard v2</li>
             </ol>
           </div><!-- /.col -->
@@ -26,66 +26,47 @@
     <section class="content">
       <div class="container-fluid">
 
-                    <!-- general form elements disabled -->
-                    <div class="card card-secondary">
-                        <div class="card-header">
-                          <h3 class="card-title">Roles</h3>
-                        </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            @if($errors->any())
-                                @foreach ($errors->all() as $error)
-                                    <p class='alert alert-danger'>{{$error}}</p>
-                                @endforeach
-                            @endif
-                            <form  action="{{ route('admin.roles.update',$ModelsRole->id) }}" method='POST'>
-                                @csrf
-                                @method('PUT')
-                            <label for="name">@lang('admin.name')</label>
-                            <input type='text' id='name' name='name' value='{{$ModelsRole->name }}' class='form-control'>
-                            <div class="row">
-                              <div class="col-sm-6">
-                                <!-- checkbox -->
-                                <div class="form-group ">
+          <!-- general form elements disabled -->
+          <div class="card card-secondary">
+            <div class="card-header">
+              <h3 class="card-title">users</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                @if($errors->any())
+                    @foreach ($errors->all() as $error)
+                        <p class='alert alert-danger'>{{$error}}</p>
+                    @endforeach
+                @endif
+                <form  action="{{ route('admin.users.update',$User->id) }}" method='POST'>
 
+                    @csrf
+                    @method('PUT')
+                <div class='form-group'>
+                    <label for="name">@lang('admin.name')</label>
+                    <input type='text' id='name' name='name' value='{{old("name",$User->name) }}' class='form-control'>
+                </div>
 
-                                    <label >@lang('admin.permission')</label>
-                                  <div class="custom-control custom-checkbox">
-                                    <input class="custom-control-input allCheckbox"  id="customCheckbox1" type="checkbox" >
-                                    <label for="customCheckbox1" class="custom-control-label">@lang('admin.all')</label>
-                                  </div>
+                <div class='form-group'>
+                    <label for="email">@lang('admin.email')</label>
+                    <input type='email' id='email' name='email' value='{{old("email",$User->email) }}' class='form-control'>
+                </div>
 
+                <div class='form-group'>
+                    <label for="roles">@lang('admin.roles')</label>
+                    <select class='form-control' name='role'>
 
-                                  <?php
+                        @foreach ($roles as $row)
+                        <option @if($User->roles->first()->name == $row->name) selected @endif value="{{$row->id}}">{{$row->name}}</option>
+                        @endforeach
+                    </select>
 
-                                    $roles = ['create' ,'read','update','delete'];
+                </div>
 
-                                    ?>
-
-                                    @foreach ($roles as $index => $role)
-                                        <div class="custom-control custom-checkbox ">
-                                            <input
-                                                class="custom-control-input record_select role"
-                                                id="customCheckbox{{ $role}}"
-                                                name='role[]'
-                                                value='{{ $role}}'
-                                                type="checkbox"
-                                                 @if($ModelsRole->hasPermission($ModelsRole->name . "_". $role))
-                                                    checked
-                                                @endif
-                                                >
-                                            <label for="customCheckbox{{ $role }}" class="custom-control-label">@lang('admin.'.$role)</label>
-                                      </div>
-                                    @endforeach
-
-                                </div>
-                              </div>
-
-                            </div>
-                            <button class='btn btn-primary'>@lang('admin.save')</button>
-                          </form>
-                        </div>
-                    </div>
+                <button class='btn btn-primary'>Update</button>
+              </form>
+            </div>
+        </div>
       <!--/. container-fluid -->
     </section>
 

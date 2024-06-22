@@ -70,10 +70,12 @@
                                                 name='role[]'
                                                 value='{{ $role}}'
                                                 type="checkbox"
-                                                 @if($ModelsRole->hasPermission($ModelsRole->name . "_". $role))
+                                                 @if($ModelsRole->hasPermission($ModelsRole->name.'-'.$role))
                                                     checked
                                                 @endif
                                                 >
+                                           
+
                                             <label for="customCheckbox{{ $role }}" class="custom-control-label">@lang('admin.'.$role)</label>
                                       </div>
                                     @endforeach

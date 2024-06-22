@@ -46,12 +46,12 @@ class User extends Authenticatable implements LaratrustUser
         'email_verified_at' => 'datetime',
     ];
 
-    // public function scopeWhereRoleId($query, $roleId)
-    // {
-    //     return $query->when($roleId, function ($q) use ($roleId) {
-    //         return $q->whereHas('roles', function ($qu) use ($roleId) {
-    //             return $qu->where('id', $roleId);
-    //         });
-    //     });
-    // }
+    public function scopeWhereRoleId($query, $roleId)
+    {
+        return $query->when($roleId, function ($q) use ($roleId) {
+            return $q->whereHas('roles', function ($qu) use ($roleId) {
+                return $qu->where('id', $roleId);
+            });
+        });
+    }
 }

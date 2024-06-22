@@ -58,7 +58,7 @@ class role extends Controller
 
         $permissons =$request->role ;
         foreach($permissons as $row){
-            $permisson = $name . "_" . $row  ;
+            $permisson = $name . "-" . $row  ;
 
            $per =  Permission::create(['name'=>$permisson]);
            $role->givePermission($per);
@@ -118,6 +118,8 @@ class role extends Controller
 
     public function bulckDelete(Request $request){
         $data = $request['buclkDelete'][0] ;
+
+        
         $numbers = explode(',', $data);
         $role = ModelsRole::whereIn('id',$numbers)->get();
         foreach($role as $row){

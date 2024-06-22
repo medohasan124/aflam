@@ -1,3 +1,4 @@
 <div>
-    <input class='record_select role' type="checkbox" value='{{ $id }}' id='{{ $id }}'>
+    <input class='record_select user' type="checkbox" value='{{ $id }}' id='{{ $id }}'>
 </div>
+
