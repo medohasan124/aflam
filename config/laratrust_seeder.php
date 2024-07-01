@@ -18,14 +18,20 @@ return [
             'profile' => 'r,u',
             'settnig' => 'c,r,u,d',
             'role' => 'c,r,u,d',
+            'genra' => 'c,r,u,d',
+            'movie' => 'c,r,u,d',
         ],
         'Admin' => [
             'user' => 'c,r,u,d',
             'profile' => 'r,u',
             'role' => 'c,r',
+            'genra' => 'c,r,u,d',
+            'movie' => 'c,r,u,d',
         ],
         'user' => [
             'profile' => 'r,u',
+            'genra' => 'r',
+            'movie' => 'r',
         ],
 
     ],

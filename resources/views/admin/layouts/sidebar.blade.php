@@ -149,10 +149,17 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img
+
+          @if(auth()->user()->image)
+            src="{{ Storage::url('uploads/'.auth()->user()->image.'') }}"
+            @else
+                src="{{ asset('images/default.jfif') }}"
+            @endif
+           class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="{{ route('admin.profile.index') }}" class="d-block">{{ auth()->user()->name }}</a>
         </div>
       </div>
 
@@ -191,11 +198,52 @@
             </a>
           </li>
 
+
           <li class="nav-item">
             <a href="{{ route('admin.users.index') }}" class="nav-link">
                 <i class="fas fa-users"></i>
               <p>
                 @lang('admin.users')
+                {{-- <span class="right badge badge-danger">New</span> --}}
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('admin.setting.index') }}" class="nav-link">
+                <i class="fas fa-cog"></i>
+              <p>
+                @lang('admin.settings')
+                {{-- <span class="right badge badge-danger">New</span> --}}
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{ route('admin.profile.index') }}" class="nav-link">
+                <i class="fas fa-user"></i>
+              <p>
+                @lang('admin.profile')
+                {{-- <span class="right badge badge-danger">New</span> --}}
+              </p>
+            </a>
+          </li>
+
+          {{-- genras --}}
+          <li class="nav-item">
+            <a href="{{ route('admin.genra.index') }}" class="nav-link">
+                <i class="fas fa-list"></i>
+              <p>
+                @lang('genra.genra')
+                {{-- <span class="right badge badge-danger">New</span> --}}
+              </p>
+            </a>
+          </li>
+          {{-- movies --}}
+          <li class="nav-item">
+            <a href="{{ route('admin.movie.index') }}" class="nav-link">
+                <i class="fas fa-video"></i> 
+              <p>
+                 @lang('movie.movies')
                 {{-- <span class="right badge badge-danger">New</span> --}}
               </p>
             </a>

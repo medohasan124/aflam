@@ -12,6 +12,7 @@ return [
     'edit'   => 'تعديل',
     'delete'   => 'حذف',
     'c_role'   => 'اضافه صلاحيات',
+    'settings'   => ' الاعدادت',
 
     'name'   => 'الاسم',
     'email'   => 'البريد الااكتروني',
@@ -25,8 +26,12 @@ return [
     'all'   => 'الكل',
     'add_success'   => 'تم الاضافة بنجاح',
     'edit_success'   => 'تم التعديل بنجاح',
+    'updated_success'   => 'تم التحديث بنجاح',
     'delete_success'   => 'تم الحذف بنجاح',
     'sureDelete'   => ' هل انت متأكد من الحذف ؟',
     'save'   => 'حفظ',
+    'description'   => 'الوصف',
+    'keyword'   => 'كلمات مقتاحية',
+    'profile'   => 'الملف الشخصي',
 
 ];

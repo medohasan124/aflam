@@ -22,10 +22,15 @@ return [
     'update'   => 'Update',
     'delete'   => 'Delete',
     'all'   => 'All',
+    'settings'   => 'Settings',
     'add_success'   => 'add Succesflly',
+    'updated_success'   => ' Update Succesflly',
     'edit_success'   => 'Edit Succesflly',
     'delete_success'   => 'Delete Succesflly',
     'sureDelete'   => 'Are You Sure To Delete ?',
     'save'   => 'Save',
+    'description'   => 'Description',
+    'keyword'   => 'Keyword',
+    'profile'   => 'Profile',
 
 ];

@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
+        "anlutro/l4-settings": "^1.4",
         "glebsky/laravel-lang-generator": "^1.0",
         "guzzlehttp/guzzle": "^7.2",
         "laravel-lang/locales": "^2.7",

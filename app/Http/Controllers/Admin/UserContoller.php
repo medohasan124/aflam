@@ -151,8 +151,6 @@ class UserContoller extends Controller
     /**
      * Remove the specified resource from storage.
      */
-
-
     public function bulckDelete(Request $request){
         $data = $request['buclkDelete'][0] ;
         $numbers = explode(',', $data);
